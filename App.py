@@ -22,7 +22,7 @@ load_dotenv()
 st.set_page_config(page_title="Notes RAG Chatbot", page_icon="📚")
 st.title("📚 Ask Your Notes")
 
-# --- Cache expensive resources so they only load once per session ---
+
 @st.cache_resource
 def load_collection():
     return get_collection()
