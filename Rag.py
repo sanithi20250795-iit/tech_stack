@@ -87,7 +87,7 @@ def answer_question(question: str, collection, groq_client: Groq) -> tuple[str, 
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_prompt},
         ],
-        temperature=0.2,  # low temperature = more grounded, less creative
+        temperature=0.2,  
     )
 
     answer = response.choices[0].message.content
@@ -96,7 +96,6 @@ def answer_question(question: str, collection, groq_client: Groq) -> tuple[str, 
 
 
 if __name__ == "__main__":
-    # Quick CLI test loop before building the UI
     groq_client = Groq(api_key=os.environ["GROQ_API_KEY"])
     collection = get_collection()
 
