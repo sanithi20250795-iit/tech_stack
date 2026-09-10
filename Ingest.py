@@ -103,7 +103,6 @@ def main():
 
     print(f"Created {len(all_chunks)} chunks. Embedding + storing in ChromaDB...")
 
-    # sentence-transformers runs locally on your machine — no API key, no cost.
     # "all-MiniLM-L6-v2" is small, fast, and good enough for this use case.
     embed_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
         model_name="all-MiniLM-L6-v2"
