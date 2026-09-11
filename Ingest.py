@@ -1,28 +1,3 @@
-"""
-INGEST PIPELINE
-================
-This script takes your notes (PDFs or .txt/.md files) and turns them into
-a searchable vector database. Run this once whenever you add new notes.
-
-Steps (this is the "R" prep-work for Retrieval-Augmented Generation):
-  1. Load raw files from data/
-  2. Split each file into overlapping chunks (so no idea gets cut in half)
-  3. Convert each chunk into an embedding vector
-  4. Store chunk text + vector + metadata in ChromaDB
-
-WHY CHUNK AT ALL?
-  Embedding models have a limited "attention span" and work best on
-  focused pieces of text (a paragraph, not a 40-page PDF). Smaller chunks
-  = more precise retrieval, but too small = loses context. ~500 tokens
-  (roughly 350-400 words) with some overlap is a solid default.
-
-WHY OVERLAP CHUNKS?
-  If a sentence explaining something important sits right at a chunk
-  boundary, no-overlap chunking can split it in half and destroy its
-  meaning. A ~50-token overlap between consecutive chunks protects
-  against that.
-"""
-
 import os
 from pathlib import Path
 
