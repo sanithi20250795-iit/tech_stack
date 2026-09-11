@@ -9,8 +9,8 @@ DATA_DIR = Path(__file__).parent / "data"
 DB_DIR = Path(__file__).parent / "chroma_db"
 COLLECTION_NAME = "notes"
 
-CHUNK_SIZE = 500       # words per chunk (approx tokens * 0.75)
-CHUNK_OVERLAP = 50     # words of overlap between consecutive chunks
+CHUNK_SIZE = 500       
+CHUNK_OVERLAP = 50     
 
 
 def load_text_from_pdf(path: Path) -> list[tuple[str, int]]:
@@ -90,8 +90,6 @@ def main():
         embedding_function=embed_fn,
     )
 
-    # Chroma batches embedding + storage together when you call .add()
-    # Add in batches to avoid overwhelming memory on large note sets.
     BATCH = 100
     for i in range(0, len(all_chunks), BATCH):
         collection.add(
