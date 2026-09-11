@@ -1,14 +1,3 @@
-"""
-STREAMLIT UI
-============
-This is Day 3's work — a chat interface on top of rag.py. Run with:
-    streamlit run app.py
-
-Streamlit re-runs this whole script on every interaction, so we use
-st.session_state to remember chat history and avoid reloading the
-embedding model / DB connection every single time (that would be slow).
-"""
-
 import os
 
 import streamlit as st
@@ -38,8 +27,6 @@ groq_client = load_groq_client()
 
 st.caption(f"{collection.count()} chunks loaded from your notes.")
 
-# --- Chat history lives in session_state, not a variable, ---
-# --- because Streamlit re-runs this file top-to-bottom on every click ---
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
